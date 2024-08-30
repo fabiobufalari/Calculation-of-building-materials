@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
-public class AtendentDTO {
+public class AttendentDTO {
 
     @NotNull(message = "ID is required")
     private Long id;

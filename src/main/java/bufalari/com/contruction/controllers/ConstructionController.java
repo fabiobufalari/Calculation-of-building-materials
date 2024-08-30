@@ -1,14 +1,13 @@
 package bufalari.com.contruction.controllers;
 
-import bufalari.com.contruction.entitys.CalculationEntity;
-import bufalari.com.contruction.exceptions.CustomException;
+import bufalari.com.contruction.dto.CalculationDTO;
+import bufalari.com.contruction.dto.CalculationResponseDTO;
 import bufalari.com.contruction.services.CalculationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import java.util.UUID;
 
@@ -23,14 +22,13 @@ public class ConstructionController {
     }
 
     @PostMapping("/calculate")
-    public ResponseEntity<?> calculateMaterials(@RequestBody CalculationEntity calculation) {
+    public ResponseEntity<CalculationResponseDTO> calculateMaterials(@RequestBody CalculationDTO calculation) {
         String traceId = UUID.randomUUID().toString();
         try {
-            return ResponseEntity.ok(calculationService.calculateMaterials(calculation, traceId));
-        } catch (CustomException e) {
-            return ResponseEntity.status(e.getHttpStatus()).body(e.getMessage() + " TraceID: " + e.getTraceId());
+            CalculationResponseDTO response = calculationService.calculateMaterials(calculation, traceId);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Internal Server Error. TraceID: " + traceId);
+            return ResponseEntity.status(500).body(new CalculationResponseDTO("Internal Server Error. TraceID: " + traceId));
         }
     }
 }

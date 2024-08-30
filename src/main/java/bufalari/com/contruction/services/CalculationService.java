@@ -1,22 +1,23 @@
 package bufalari.com.contruction.services;
 
-
-import bufalari.com.contruction.exceptions.CustomException;
-import bufalari.com.contruction.entitys.CalculationEntity;
+import bufalari.com.contruction.dto.CalculationDTO;
+import bufalari.com.contruction.dto.CalculationResponseDTO;
+import bufalari.com.contruction.utils.CalculationUtils;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CalculationService {
 
-    public String calculateMaterials(CalculationEntity calculation, String traceId) throws CustomException {
-        // Implement the calculation logic here
-        // Convert feet and inches to meters or necessary units
-        // Perform calculations for each wall, window, door, etc.
-        try {
-            // Your calculation logic here
-            return "CalculationEntity successful.";
-        } catch (Exception e) {
-            throw new CustomException("Error during calculation", 400, traceId);
-        }
+    public CalculationResponseDTO calculateMaterials(CalculationDTO calculation, String traceId) {
+        CalculationResponseDTO response = new CalculationResponseDTO();
+
+        // Implement the calculation logic for each type of material
+        response.setTopPlates(CalculationUtils.calculateTopPlates(calculation));
+        response.setHeaders(CalculationUtils.calculateHeaders(calculation));
+        response.setDrywalls(CalculationUtils.calculateDrywalls(calculation));
+        response.setCeilings(CalculationUtils.calculateCeilings(calculation));
+        response.setPlywoods(CalculationUtils.calculatePlywoods(calculation));
+
+        return response;
     }
 }

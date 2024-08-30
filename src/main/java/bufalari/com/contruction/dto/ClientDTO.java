@@ -25,4 +25,16 @@ public class ClientDTO {
 
     @Email(message = "Email should be valid")
     private String email;
+
+    @NotBlank(message = "City is required")
+    private String city;
+
+    @NotBlank(message = "Province is required")
+    private String province;
+
+    @NotBlank(message = "Postal code is required")
+    private String postalCode;
+
+    @NotBlank(message = "SIN number is required")
+    private String sinNumber;
 }
