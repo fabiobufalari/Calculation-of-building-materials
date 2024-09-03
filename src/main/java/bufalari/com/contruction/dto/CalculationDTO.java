@@ -36,4 +36,6 @@ public class CalculationDTO {
     private double plywoodHeight;
     private double plywoodWidth;
     private int plywoodSize;
+    private double totalLinearCalculationInternal;
+    private double totalLinearCalculationExternal;
 }

@@ -27,7 +27,7 @@ public class WallEntity {
     private List<DoorEntity> doors;
 
     @ManyToOne
-    @JoinColumn(name = "calculation_internal_id") // nome do campo de junção correto
+    @JoinColumn(name = "calculation_internal_id")
     private CalculationInternalEntity calculationInternalEntity;
 
     @ManyToOne

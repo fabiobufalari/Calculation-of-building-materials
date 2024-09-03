@@ -13,10 +13,9 @@ public class CalculationInternalEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true) // Garante que wallIdentification seja único
+    @Column(unique = true)
     private String wallIdentification;
 
     @OneToMany(mappedBy = "calculationInternalEntity", cascade = CascadeType.ALL)
     private List<WallEntity> walls;
-
 }

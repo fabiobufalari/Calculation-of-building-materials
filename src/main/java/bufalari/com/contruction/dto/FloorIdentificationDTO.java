@@ -17,12 +17,16 @@ public class FloorIdentificationDTO {
     @NotNull(message = "ID of calculation is required")
     private Long idCalculation;
 
+    @NotNull(message = "CalculationInternal details are required")
+    private List<CalculationInternalDTO> linearCalculationInternal;
+
+    @NotNull(message = "CalculationExternal details are required")
+    private List<CalculationExternalDTO> linearCalculationExternal;
+
     @NotNull(message = "CalculationLinear details are required")
     private List<CalculationLinearExternalDTO> calculationLinear;
 
-    @NotNull(message = "CalculationInternal details are required")
-    private List<CalculationInternalDTO> calculationInternal;
+    private double totalLinearCalculationExternal;
 
-    @NotNull(message = "CalculationExternal details are required")
-    private List<CalculationExternalDTO> calculationExternal;
+    private double totalWalls;
 }

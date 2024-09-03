@@ -18,6 +18,6 @@ public class DoorEntity {
     private double doorThickness;
 
     @ManyToOne
-    @JoinColumn(name = "wall_id") // Ensure the column name matches the field in the database
+    @JoinColumn(name = "wall_id")
     private WallEntity wallEntity;
 }

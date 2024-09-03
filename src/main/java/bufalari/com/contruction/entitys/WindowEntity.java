@@ -18,7 +18,6 @@ public class WindowEntity {
     private double windowThickness;
 
     @ManyToOne
-    @JoinColumn(name = "wall_id") // Certifique-se de que o nome da coluna corresponde ao campo no banco de dados
+    @JoinColumn(name = "wall_id")
     private WallEntity wallEntity;
-
 }

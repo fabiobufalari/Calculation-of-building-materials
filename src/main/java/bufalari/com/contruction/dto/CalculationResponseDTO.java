@@ -3,20 +3,22 @@ package bufalari.com.contruction.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class CalculationResponseDTO {
+
+
     private ClientDTO clientDTO;
-    private AttendentDTO atendentDTO;
+    private AttendentDTO attendentDTO;
     private CompanyDTO companyDTO;
-    private int topPlates;
-    private int headers;
-    private int drywalls;
-    private int ceilings;
-    private int plywoods;
+    private List<FloorCalculationDTO> calculationStructure;
+    private double totalLinearCalculationInternal;
+    private double totalLinearCalculationExternal;
     private String errorMessage;
 
     public CalculationResponseDTO(String errorMessage) {
-        this.errorMessage = errorMessage;
+      this.errorMessage = errorMessage;
     }
 }

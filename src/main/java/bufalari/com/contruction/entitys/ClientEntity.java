@@ -1,6 +1,5 @@
 package bufalari.com.contruction.entitys;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +18,4 @@ public class ClientEntity {
     private String address;
     private String phoneNumber;
     private String email;
-
-
 }

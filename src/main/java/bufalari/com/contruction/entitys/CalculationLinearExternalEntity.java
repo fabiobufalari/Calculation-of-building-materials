@@ -1,12 +1,14 @@
 package bufalari.com.contruction.entitys;
 
-import javax.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class CalculationLinearExternalEntity {
 
     @Id
@@ -18,9 +20,8 @@ public class CalculationLinearExternalEntity {
 
     @ManyToOne
     @JoinColumn(name = "floor_identification_id", nullable = false)
-    private FloorIdentificationEntity floorIdentification; // Relacionamento com FloorIdentificationEntity
+    private FloorIdentificationEntity floorIdentification;
 
     @OneToMany(mappedBy = "calculationLinearExternalEntity", cascade = CascadeType.ALL)
     private List<WallEntity> wallEntities;
-
 }

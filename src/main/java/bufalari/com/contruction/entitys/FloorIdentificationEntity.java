@@ -21,7 +21,7 @@ public class FloorIdentificationEntity {
 
     @ManyToOne
     @JoinColumn(name = "calculation_id", nullable = false)
-    private CalculationEntity calculation; // Relacionamento com CalculationEntity
+    private CalculationEntity calculation;
 
     @OneToMany(mappedBy = "floorIdentification", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CalculationLinearExternalEntity> calculationLinear;

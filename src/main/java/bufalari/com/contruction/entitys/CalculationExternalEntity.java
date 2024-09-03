@@ -5,7 +5,6 @@ import lombok.Data;
 
 import java.util.List;
 
-
 @Data
 @Entity
 public class CalculationExternalEntity {
@@ -14,10 +13,9 @@ public class CalculationExternalEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true) // Garante que wallIdentification seja único
+    @Column(unique = true)
     private String wallIdentification;
 
     @OneToMany(mappedBy = "calculationExternalEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<WallEntity> walls;
-
 }
