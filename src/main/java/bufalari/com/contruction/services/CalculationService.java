@@ -39,8 +39,29 @@ public class CalculationService {
                 }
 
                 InternalWallDTO internalWall = new InternalWallDTO();
+                internalWall.setIdentifyWall(internalCalc.getWallIdentification());
+                internalWall.setIntersection("Intersection 1"); // Exemplo de valor
+                internalWall.setWallLengthFoot(wallLengthFoot);
+                internalWall.setWallHeightFoot(wallHeightFoot);
                 internalWall.setTotalWallLengthFoot(wallLengthFoot);
                 internalWall.setTotalWallHeightFoot(wallHeightFoot);
+                internalWall.setWallThickness(0.5); // Exemplo de valor
+                internalWall.setSideOfWall("IN"); // Exemplo de valor
+                internalWall.setStudSpacing(16.0); // Exemplo de valor
+                internalWall.setWetArea(false); // Exemplo de valor
+
+                // Adicionar janelas e portas
+                List<WindowDTO> windows = new ArrayList<>();
+                for (WindowDTO window : wall.getWindows()) {
+                    windows.add(window);
+                }
+                internalWall.setWindows(windows);
+
+                List<DoorDTO> doors = new ArrayList<>();
+                for (DoorDTO door : wall.getDoors()) {
+                    doors.add(door);
+                }
+                internalWall.setDoors(doors);
 
                 internalCalculation.setWalls(internalWall);
                 internalCalculations.add(internalCalculation);
@@ -64,8 +85,29 @@ public class CalculationService {
                 }
 
                 ExternalWallDTO externalWall = new ExternalWallDTO();
+                externalWall.setIdentifyWall(externalCalc.getWallIdentification());
+                externalWall.setIntersection("Intersection 2"); // Exemplo de valor
+                externalWall.setWallLengthFoot(wallLengthFoot);
+                externalWall.setWallHeightFoot(wallHeightFoot);
                 externalWall.setTotalWallLengthFoot(wallLengthFoot);
                 externalWall.setTotalWallHeightFoot(wallHeightFoot);
+                externalWall.setWallThickness(0.75); // Exemplo de valor
+                externalWall.setSideOfWall("Right"); // Exemplo de valor
+                externalWall.setStudSpacing(24.0); // Exemplo de valor
+                externalWall.setWetArea(false); // Exemplo de valor
+
+                // Adicionar janelas e portas
+                List<WindowDTO> windows = new ArrayList<>();
+                for (WindowDTO window : wall.getWindows()) {
+                    windows.add(window);
+                }
+                externalWall.setWindows(windows);
+
+                List<DoorDTO> doors = new ArrayList<>();
+                for (DoorDTO door : wall.getDoors()) {
+                    doors.add(door);
+                }
+                externalWall.setDoors(doors);
 
                 externalCalculation.setWalls(externalWall);
                 externalCalculations.add(externalCalculation);
