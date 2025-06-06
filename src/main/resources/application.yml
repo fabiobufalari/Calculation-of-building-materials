@@ -1,0 +1,93 @@
+spring:
+  application:
+    name: bim-processing-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bim_processing
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+server:
+  port: 8084
+  servlet:
+    context-path: /api/bim
+
+# Security Configuration
+security:
+  jwt:
+    secret: ${JWT_SECRET:constructionhub_bim_processing_secret_key_for_development_only}
+    expiration: 86400000 # 24 hours in milliseconds
+
+# File Storage Configuration
+file:
+  upload-dir: ${FILE_UPLOAD_DIR:/tmp/bim-processing/uploads}
+  temp-dir: ${FILE_TEMP_DIR:/tmp/bim-processing/temp}
+  max-size: 104857600 # 100MB in bytes
+
+# BIM Parser Configuration
+bim:
+  parsers:
+    autocad:
+      enabled: true
+      supported-extensions: dwg,dxf
+    revit:
+      enabled: true
+      supported-extensions: rvt,ifc
+    archicad:
+      enabled: true
+      supported-extensions: pln,ifc
+    sketchup:
+      enabled: false
+      supported-extensions: skp,dxf
+    civil3d:
+      enabled: false
+      supported-extensions: dwg,cim
+    vectorworks:
+      enabled: false
+      supported-extensions: vw,ifc
+    chiefarchitect:
+      enabled: false
+      supported-extensions: plan,dxf
+    microstation:
+      enabled: false
+      supported-extensions: dgn,dwg
+    bricscad:
+      enabled: false
+      supported-extensions: dwg
+
+# Integration Configuration
+integration:
+  materials-service:
+    url: ${MATERIALS_SERVICE_URL:http://localhost:8085/api/materials}
+    enabled: false
+
+# Logging Configuration
+logging:
+  level:
+    root: INFO
+    com.constructionhub: DEBUG
+    org.springframework.web: INFO
+    org.hibernate: INFO
+
+# Documentation Configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
