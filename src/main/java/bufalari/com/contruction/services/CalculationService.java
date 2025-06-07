@@ -52,14 +52,22 @@ public class CalculationService {
 
                 // Adicionar janelas e portas
                 List<WindowDTO> windows = new ArrayList<>();
-                for (WindowDTO window : wall.getWindows()) {
-                    windows.add(window);
+                for (InternalWallDTO wallItem : internalCalc.getWalls()) {
+                    if (wallItem.getWindows() != null) {
+                        for (WindowDTO window : wallItem.getWindows()) {
+                            windows.add(window);
+                        }
+                    }
                 }
                 internalWall.setWindows(windows);
 
                 List<DoorDTO> doors = new ArrayList<>();
-                for (DoorDTO door : wall.getDoors()) {
-                    doors.add(door);
+                for (InternalWallDTO wallItem : internalCalc.getWalls()) {
+                    if (wallItem.getDoors() != null) {
+                        for (DoorDTO door : wallItem.getDoors()) {
+                            doors.add(door);
+                        }
+                    }
                 }
                 internalWall.setDoors(doors);
 
@@ -98,14 +106,22 @@ public class CalculationService {
 
                 // Adicionar janelas e portas
                 List<WindowDTO> windows = new ArrayList<>();
-                for (WindowDTO window : wall.getWindows()) {
-                    windows.add(window);
+                for (ExternalWallDTO wallItem : externalCalc.getWalls()) {
+                    if (wallItem.getWindows() != null) {
+                        for (WindowDTO window : wallItem.getWindows()) {
+                            windows.add(window);
+                        }
+                    }
                 }
                 externalWall.setWindows(windows);
 
                 List<DoorDTO> doors = new ArrayList<>();
-                for (DoorDTO door : wall.getDoors()) {
-                    doors.add(door);
+                for (ExternalWallDTO wallItem : externalCalc.getWalls()) {
+                    if (wallItem.getDoors() != null) {
+                        for (DoorDTO door : wallItem.getDoors()) {
+                            doors.add(door);
+                        }
+                    }
                 }
                 externalWall.setDoors(doors);
 
