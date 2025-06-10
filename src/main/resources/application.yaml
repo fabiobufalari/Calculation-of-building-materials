@@ -1,13 +1,11 @@
 # =========================================
 # MS Calculation-of-building-materials
 # =========================================
-
 # =========================================
 # Server Configuration
 # =========================================
 server:
   port: 8080 # Porta deste serviço
-
 # =========================================
 # Spring Boot Application Configuration
 # =========================================
@@ -23,10 +21,10 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    open-in-view: false
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
   
   # =========================================
   # Mail Configuration (JavaMailSender)
@@ -46,14 +44,12 @@ spring:
           ssl:
             trust: "*"
     test-connection: false
-
 # =========================================
 # External Service URLs
 # =========================================
 auth:
   service:
     url: ${AUTH_SERVICE_URL} # URL do Authentication Service
-
 # =========================================
 # JWT Configuration (Este serviço VALIDA)
 # =========================================
@@ -61,7 +57,6 @@ security:
   jwt:
     token:
       secret-key: ${JWT_SECRET_KEY} # <<< CHAVE IDÊNTICA
-
 # =========================================
 # Logging Configuration
 # =========================================
@@ -71,7 +66,6 @@ logging:
     org.springframework.security: INFO
     bufalari.com: DEBUG # Pacote raiz deste serviço
     org.hibernate.SQL: DEBUG
-
 # =========================================
 # Swagger/OpenAPI Configuration
 # =========================================
@@ -83,7 +77,6 @@ springdoc:
     operations-sorter: method
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
-
 # =========================================
 # Actuator Configuration
 # =========================================
